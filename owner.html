@@ -1,0 +1,30 @@
+<!--suppress ALL -->
+<div class="gridSearchBar">
+    <div class="gridSearchinput pull-left">
+        <form class="form-horizontal">
+            <div class="control-group">
+                <div class="controls">
+                    <input type="text" class="input-large search-query"
+                           ng-model="filterOptions.filterText"
+                           placeholder="search by customer or plant name">
+                    <button type="submit" class="btn btn-icon">
+                        <i class="icon-search"></i>
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="secondrow" id="userdetails">
+    <div class="pull-right">
+        <button ng-click="showAddPlantModal();" ng-disabled="disableadd" testid="addcustomerbtn" class="btn btn-primary ng-binding">Add Customer</button> 
+        <!--button ng-click="showAddPlantModal();"  class="btn btn-primary ng-binding">Add Plant</button--> 
+    </div>
+    </div>
+</div>
+<div class="row">
+        <section class="module fullwidth">
+            <div class="customersGrid" ng-grid="gridOptions"></div>
+        </section>
+</div>
+

@@ -1,0 +1,77 @@
+<div class="grid">
+	<div class="gridSearchBar">
+		<div class="gridSearchinput pull-left">
+			<form class="form-horizontal">
+				<div class="control-group">
+					<div class="controls">
+						<input type="text" class="input-large search-query"
+							ng-model="filterOptions.filterText"
+							placeholder="search by serial, tag, or model #">
+						<button type="submit" class="btn btn-icon">
+							<i class="icon-search"></i>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+		<!--  <div ng-controller="addmenu" class="pull-left" ng-if="gridType === 'VALVE'">
+      <div ng-include src="addGlobalMenuItemsTemplateUrl"></div>
+    </div> -->
+		<div class="pull-left" ng-if="gridType === 'VALVE'" ng-show="showEditMode()">
+			<button  ng-click="addValve()" testid="grid-body-add-valve-btn" class="btn btn-primary">
+				{{valveTextAssets.addValve}}</button>
+		</div>
+	</div>
+</div>
+<div class="secondrow">
+	<div class="savedfilter pull-left">
+		<select ng-model="selected.savedfilter" testid="grid-body-savedfilter"
+			ng-options="filter.id as filter.filterName for filter in savedfilters">
+		</select>
+
+	</div>
+	<div class="pull-right" ng-if="gridType === 'REPAIR'"  tooltip="Select a record in the grid to generate a report" tooltip-trigger="click: click">
+
+		<select ng-model="selected.printreport" testid="grid-body-report" ng-disabled="gridOptions.selectedItems.length==0">
+			<option value="">Select Report</option>
+			<option value="datasheet">Print Data Sheet</option>
+			<option value="traveller">Print Traveller</option>
+			<optgroup label="Summary">
+				<option value="All" translate="GLOBAL_ALL"></option>
+				<option value="Parts" translate="GLOBAL_PARTS"></option>
+				<option value="Welds"  translate="GLOBAL_WELDS"></option>
+				<option value="Critical Dimention"  translate="GLOBAL_CRIT_DIM"></option>
+				<option value="Pressure Test">Pressure Test</option>
+				<option value="Quality Check">Quality Check</option>
+			</optgroup>			
+		</select>
+	</div>
+</div>
+<div class="filterBar">
+	<span class="filterTxt" translate="VALVE_TYPE"> </span> <select
+		ng-model="selected.gridtype" testid="grid-body-valve-type"
+		ng-options="gridtype.gridId as gridtype.gridName for gridtype in gridtypes"></select>
+
+	<span class="filterTxt" translate="GLOBAL_OWNER"> :</span>
+    <select
+		ng-model="selected.owner" testid="grid-body-customer" ng-change="getPlantByOwner(selected.owner);"
+		ng-disabled="disableOwner"
+		ng-options="owner.id as owner.name for owner in allOwner |orderBy:'name'">
+		<option value=""  translate="GLOBAL_ALL"></option>
+	</select>
+    <span class="filterTxt" ng-show="plantExists" translate="GLOBAL_PLANT">:</span>
+    <select testid="grid-body-plant" ng-model="selected.plant"
+		ng-change="updatePlantId(selected.plant);"
+		ng-options="plant.id as plant.location for plant in plants"
+		ng-disabled="disablePlant" ng-show="plantExists">
+		<option value="" translate="GLOBAL_ALL"></option>
+	</select>
+</div>
+
+<section class="module fullwidth" style="min-height:835px;">
+	<div class="module-body" style="background-color:#fff; width:96%; margin-left:10px;">
+	 <br><h4 ng-if="gridType === 'REPAIR'" translate="REPAIR_GRID_TITLE"></h4>
+		<div class="gridStyle valverepairgrid" testid="grid-body-{{gridType}}" ng-grid="gridOptions" style="min-height:650px"></div>
+		<div ng-controller="gridfooter" class="gridfooter"><div ng-include src="gridFooterTemplateUrl"></div></div>		
+	</div>
+</section>

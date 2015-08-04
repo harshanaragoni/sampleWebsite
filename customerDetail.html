@@ -1,0 +1,240 @@
+
+<section class="customerDetails module fullwidth">
+
+  <div class="module-body">
+
+    <!-- Breadcrumbs -->
+    <div class="row-fluid breadcrumbs">
+      <div class="span12">
+          <a href="#/plant/" testid="cd-breadcrumb-customer" ng-show="!customerRole">Customer</a> <span ng-show="!customerRole">&gt;  {{data.owner.name}} &gt; </span>
+          <select ng-model="plant.id" ng-options="plant.id as plant.location for plant in plants" testid="cd-breadcrumb-plant"> </select>
+      </div>
+    </div>
+    <div class="summary row-fluid">
+      <!--Coumn1 -->
+      <div>
+        <div class="thumb span1">
+         <img  ng-if="imagesrc" class=""  ng-src="data:image/gif;base64,{{imagesrc}}">
+          <a ng-click="uploadLogo()">Upload Image</a>
+        </div>
+      </div>
+      <!--Coumn2 -->
+      <div class="span1 ng-scope">
+        <div class="form-horizontal">
+          <div class="ng-scope ng-isolate-scope">
+            <fieldset class="ng-scope">
+              <div class="">
+                {{plant.location}} <br />
+                {{data.owner.name}}<br/>
+                <a href="#/valve?plantId={{plant.id}}" testid="cd-count-valves">{{plant.valveCount}} Valves</a><br/>
+                <a href="#/repair?plantId={{plant.id}}" testid="cd-count-repairs">{{plant.repairCount}} Repairs</a>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+
+     <!--Coumn3 -->
+      <div class="span2 ng-scope">
+        <div class="form-horizontal">
+          <div class="ng-scope ng-isolate-scope">
+            <fieldset class="ng-scope">
+              <div class="control-group">
+                <label class="control-label ng-binding" ng-click="edit($event)">{{'CUSTOMER_DETAILS_PLANT_NAME' | translate}}</label>
+                <div class="controls editInPlace">
+                  <input ng-model="plant.location" class="input-medium" placeholder="Plant Location" testid="cd-header-plant-location">
+                </div>
+                <label class="control-label ng-binding" ng-click="edit($event)">{{'CUSTOMER_OWNER_NAME' | translate}}</label>
+                <div class="controls editInPlace">
+                  <input ng-model="data.owner.name" class="input-medium" placeholder="Owner Name" testid="cd-header-plant-name">
+                </div>
+                <label class="control-label ng-binding" ng-click="edit($event)">{{'CUSTOMER_CONTACT_ADDRESS1' | translate}}</label>
+                <div class="controls editInPlace">
+                  <input ng-model="data.contact.address1" class="input-medium" placeholder="Contact Address1" testid="cd-header-plant-add1">
+                </div>
+                <label class="control-label ng-binding" ng-click="edit($event)">{{'CUSTOMER_CONTACT_ADDRESS2' | translate}}</label>
+                <div class="controls editInPlace">
+                  <input ng-model="data.contact.address2" class="input-medium" placeholder="Contact Address2" testid="cd-header-plant-add2">
+                </div>
+                <label class="control-label ng-binding" ng-click="edit($event)">{{'CUSTOMER_CONTACT_ADDRESS3' | translate}}</label>
+                <div class="controls editInPlace">
+                  <input ng-model="data.contact.address3" class="input-medium" placeholder="Contact Address3" testid="cd-header-plant-add3">
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+      <!--Coumn4 -->
+      <div class="span2 ng-scope">
+        <div class="form-horizontal">
+          <div class="ng-scope ng-isolate-scope">
+            <fieldset class="ng-scope">
+              <div class="control-group">
+                <label class="control-label ng-binding" ng-click="edit($event)">{{'CUSTOMER_CONTACT_CITY' | translate}}</label>
+                <div class="controls editInPlace">
+                  <input ng-model="data.contact.city" class="input-medium" placeholder="Contact City" testid="cd-header-contact-city">
+                </div>
+                <label class="control-label ng-binding" ng-click="edit($event)">{{'CUSTOMER_CONTACT_STATE' | translate}}</label>
+                <div class="controls editInPlace">
+                  <input ng-model="data.contact.state" class="input-medium" placeholder="Contact State" testid="cd-header-contact-state">
+                </div>
+                <label class="control-label ng-binding" ng-click="edit($event)">{{'CUSTOMER_CONTACT_ZIP' | translate}}</label>
+                <div class="controls editInPlace">
+                  <input ng-model="data.contact.zip" class="input-medium" placeholder="Contact Zip" testid="cd-header-contact-zip">
+                </div>
+                <label class="control-label ng-binding" ng-click="edit($event)">{{'CUSTOMER_CONTACT_COMMENTS' | translate}}</label>
+                <div class="controls editInPlace">
+                  <input ng-model="data.contact.comments" class="input-medium" placeholder="Contact Comments" testid="cd-header-contact-comments">
+                </div>
+                <label class="control-label ng-binding" ng-click="edit($event)">{{'CUSTOMER_CONTACT_COUNTRY' | translate}}</label>
+                <div class="controls editInPlace">
+                  <input ng-model="data.contact.country" class="input-medium" placeholder="Contact Country" testid="cd-header-contact-country">
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+      <!--Coumn5 -->
+      <div class="span2 ng-scope">
+        <div class="form-horizontal">
+          <div class="ng-scope ng-isolate-scope">
+            <fieldset class="ng-scope">
+              <div class="control-group">
+                <label class="control-label ng-binding" ng-click="edit($event)">{{'CUSTOMER_DETAILS_PHONE' | translate}}</label>
+                <div class="controls editInPlace">
+                  <input ng-model="data.contact.phone" class="input-medium" placeholder="Contact Phone" testid="cd-header-contact-phone">                </div>
+                <label class="control-label ng-binding" ng-click="edit($event)">{{'CUSTOMER_DETAILS_FAX' | translate}}</label>
+                <div class="controls editInPlace">
+                  <input ng-model="data.contact.fax" class="input-medium" placeholder="Contact Fax" testid="cd-header-contact-fax">
+                </div>
+                <label class="control-label ng-binding" ng-click="edit($event)">{{'CUSTOMER_DETAILS_EMAIL' | translate}}</label>
+                <div class="controls editInPlace">
+                  <input ng-model="data.contact.email" placeholder="Contact Email"  class="input-medium" testid="cd-header-contact-email">
+                </div>
+              
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+      <!--Coumn6 -->
+      <div class="span2 ng-scope">
+        <div class="form-horizontal">
+          <div class="ng-scope ng-isolate-scope">
+            <fieldset class="ng-scope">
+              <div class="control-group">
+                <label class="control-label ng-binding" ng-click="edit($event)">{{'CUSTOMER_DETAILS_GTC' | translate}}</label>
+                <div class="controls editInPlace">
+                  <input ng-model="plant.gtcMarcContact" class="input-medium" placeholder="Plant GTC Contact" testid="cd-header-plant-gtcmarccontract">
+                </div>
+                <label class="control-label ng-binding" ng-click="edit($event)">{{'CUSTOMER_DETAILS_ACCOUNT' | translate}}</label>
+                <div class="controls editInPlace">
+                  <input ng-model="plant.account" class="input-medium" placeholder="Plant Account" testid="cd-header-plant-account">
+                </div>
+                <label class="control-label ng-binding" ng-click="edit($event)">{{'CUSTOMER_DETAILS_AREA' | translate}}</label>
+                <div class="controls editInPlace">
+                  <input ng-model="plant.area" class="input-medium" placeholder="Plant Area" testid="cd-header-plant-area">
+                </div>
+                <label class="control-label ng-binding" ng-click="edit($event)">{{'CUSTOMER_DETAILS_INTERVAL' | translate}}</label>
+                <div class="controls editInPlace">
+                  <input ng-model="plant.plantMaintInterval" class="input-medium" placeholder="Plant Maint Interval" testid="cd-header-plant-plantMaintInterval">
+                </div>
+                <label class="control-label ng-binding" ng-click="edit($event)">{{'CUSTOMER_DETAILS_GTC_EMAIL' | translate}}</label>
+                <div class="controls editInPlace">
+                  <input ng-model="plant.emailContactatGTC" class="input-medium" placeholder="Email Contact GTC" testid="cd-header-plant-emailContactatGTC">
+                </div>
+              </div>
+            </fieldset>
+          </div>
+        </div>
+      </div>
+   </div>  <!--Enf of the ROW -->
+ 
+    <!-- Metadata -->
+
+    <!-- Toolbar -->
+    <div ng-class="{hasEdit: hasEdit}" class="editBar plantBar row-fluid">
+      <div class="actions pull-left" ng-show="hasEdit">
+        <button class="btn btn-primary" ng-click="savePlantEdits()" testid="cd-header-customer-save-btn">Save</button>
+        <button class="btn default" ng-click="cancelPlantEdits()" testid="cd-header-customer-cancel-btn">Cancel</button>
+      </div>
+    </div>
+
+
+    <!-- Detail -->
+    <div class="row-fluid plant">
+      <!-- First Column -->
+      <div class="span2">
+        <div class="row-fluid">
+          <div class="span12">
+            <div class="span12 analytics" ng-show="showDash===true">
+              <table  ng-repeat="graph in leftGraphs" testid="dashboardgridtable">
+	      			<col width="{{bar.width}}%"  ng-repeat="bar in graph.bars">
+	      		    <tr>
+	      			<td style="text-align:left;font-weight:bold;" colspan="{{graph.bars.length}}">{{graph.title}}</td>
+ 	      			</tr>
+	      			<tr class="{{graph.colorScheme}}" ng-show="graph.type=='singleBar'"> 
+	      				<td style="width:{{bar.width}}%"  ng-repeat="bar in graph.bars"><span tooltip-placement="bottom" tooltip-html-unsafe="{{bar.toolTip}}" >{{bar.value}}</span> </td>
+ 	      			</tr>
+	      			<tr ng-show="graph.showLabels==true"> 
+	      				<td ng-repeat="bar in graph.bars"> {{bar.label}}</td>
+ 	      			</tr>
+	      		</table> 
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Second column -->
+      
+      <div class="span5">
+          <!--div style="height:30px;">
+            <span style="margin:0px;" class="pull-left"><h3>{{'CUSTOMER_DETAILS_JOBS' | translate}}</h3></span>
+            <button class="btn add pull-right" ng-click="plantJobModal()"><i class="icon-plus"></i></button>
+          </div-->
+          <div class="row-fluid">
+            <div id="jobsGrid"  testid="cd-job-grid" class="gridStyle" ng-grid="jobgridOptions" style="height:150px; overflow:auto;"></div>
+          </div>
+          <div ng-show="jobdetails">
+            <h2>
+                Job Snapshot
+            </h2>
+            <div>
+              <table width="100%" testid="cd-job-details-table">
+                <tbody>
+                  <tr><td width="50%">Name</td><td>{{jobdetails.name}}</td></tr>
+                  <tr><td>Number</td><td>{{jobdetails.jobnumber}}</td></tr>
+                  <tr><td>Status</td><td>{{jobdetails.name}}</td></tr>
+                  <tr><td>Tests</td><td>{{jobdetails.name}}</td></tr>
+                  <tr><td>Repairs</td><td>{{jobdetails.name}}</td></tr>
+                  <tr><td>Start Date</td><td>{{jobdetails.name}}</td></tr>
+                  <tr><td>Due Date</td><td>{{jobdetails.dueDate}}</td></tr>
+                  <tr><td>Customer WO#</td><td>{{jobdetails.name}}</td></tr>
+                  <tr><td>Customer PO</td><td>{{jobdetails.custPurchaseOrder}}</td></tr>
+                  <tr><td>Invoice Number</td><td>{{jobdetails.invoiceNumber}}</td></tr>
+                  <tr><td>Notes</td><td>{{jobdetails.details}}</td></tr>
+                </tbody>
+          </table>
+        </div>
+        </div>
+          
+      </div>
+      <div class="span5">
+          <div class="row-fluid">
+            <div id="taskGrid" testid="cd-tasks-grid" class="gridStyle" ng-grid="taskgridOptions" style="height:150px; overflow:auto;"></div>
+          </div>
+          <br>
+          <div class="row-fluid">
+            <div id="docsGrid" testid="cd-docs-grid" class="gridStyle" ng-grid="docsgridOptions" style="height:150px; overflow:auto;"></div>
+          </div><br>
+          <div class="row-fluid">
+            <div id="notesGrid" testid="cd-notes-grid" class="gridStyle" ng-grid="notesgridOptions" style="height:150px; overflow:auto;"></div>
+          </div>
+          <br>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
